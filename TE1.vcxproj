@@ -19,10 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="2DMetaball.cpp" />
+    <ClCompile Include="Gravity.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="2DMetaball.h" />
+    <ClInclude Include="Gravity.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
