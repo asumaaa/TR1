@@ -45,8 +45,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 	// ゲームループで使う変数の宣言
 
-	Triangle triangle1 = { {200,300},{100,500},{500,500} ,10};
-	Triangle triangle2 = { {800,400},{700,450},{1050,600} ,10};
+	Triangle triangle1 = { {200,300},{100,500},{500,500} ,300};
+	Triangle triangle2 = { {800,400},{700,450},{1050,600} ,300};
 
 	//各点の重力を定義
 	Gravity t11(triangle1.top.x, triangle1.top.y, triangle1.weight);
@@ -57,9 +57,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	Gravity t22(triangle2.left.x, triangle2.left.y, triangle2.weight);
 	Gravity t23(triangle2.right.x, triangle2.right.y, triangle2.weight);
 
-	circle circle1{ 500, 500, 256, 200 };
+	/*circle circle1{ 500, 500, 256, 200 };*/
 
-	Metaball metaball1(300, 300, 128, 100);
+	Metaball metaball1(300, 300, 128, 200);
 	Metaball metaball2(900, 300, 128, 200);
 
 
@@ -81,7 +81,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 		// 更新処理
 
-		/*t11.Gravitation(t21);
+		t11.Gravitation(t21);
 		t12.Gravitation(t22);
 		t13.Gravitation(t23);
 
@@ -90,7 +90,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		t23.Gravitation(t13);
 
 		triangle1 = { {t11.x,t11.y},{t12.x,t12.y}, {t13.x,t13.y},triangle1.weight };
-		triangle2 = { {t21.x,t21.y},{t22.x,t22.y}, {t23.x,t23.y},triangle2.weight };*/
+		triangle2 = { {t21.x,t21.y},{t22.x,t22.y}, {t23.x,t23.y},triangle2.weight };
 
 		metaball1.Gravitation(metaball2);
 		metaball2.Gravitation(metaball1);
@@ -99,7 +99,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		// 描画処理
 		/*DrawTriangle(triangle1);
 		DrawTriangle(triangle2);*/
-		/*DrawMetaball(circle1);*/
 
 		metaball1.Draw();
 		metaball2.Draw();

@@ -24,4 +24,5 @@ public:
 
 	//
 	void Gravitation(Gravity g);
+	void GravitationY(Gravity g);
 };

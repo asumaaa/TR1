@@ -44,15 +44,8 @@ void Metaball::Gravitation(Metaball metaball2)
 	for (int i = 0; i < 64; i++)
 	{
 		gra[i].Gravitation(metaball2.gra[63 - i]);
-		/*if (i <= 32)
-		{
-			gra[i].Gravitation(metaball2.gra[32 - i]);
-		}
-		if (i >= 33)
-		{
-			gra[i].Gravitation(metaball2.gra[96 - i]);
-		}*/
 		dot[i].x = gra[i].x;
+		gra[i].GravitationY(metaball2.gra[i]);
 		dot[i].y = gra[i].y;
 	}
 }

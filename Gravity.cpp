@@ -33,7 +33,7 @@ float Gravity::VecGetY(Gravity g)
 
 void Gravity::Gravitation(Gravity g)
 {
-	if (abs(x - g.x) >= 48 || abs(y - g.y) >= 48)
+	if (abs(x - g.x) >= 100 || abs(y - g.y) >= 100)
 	{
 		if (x - g.x < 0)
 		{
@@ -44,28 +44,43 @@ void Gravity::Gravitation(Gravity g)
 			x -=  ((weight * g.weight) / (length(g) * length(g))) * G * VecGetX(g);
 		}
 	}
-	else if(abs(x - g.x) != 0 || abs(y - g.y) != 0)
+	else if(abs(x - g.x) != 0/* || abs(y - g.y) != 0*/)
 	{
 		if (x - g.x < 0)
 		{
-			x += abs(x - g.x)/2;
+			x += abs(x - g.x) /2;
 		}
 		else
 		{
-			x -= abs(x - g.x)/2;
+			x -= abs(x - g.x)/3;
 		}
 	}
 
-	if (abs(x - g.x) >= 48|| abs(y - g.y) >=48)
+	/*if (abs(x - g.x) >= 100|| abs(y - g.y) >=100)
 	{
-		/*if (y - g.y < 0)
+		if (y - g.y < 0)
 		{
 			y += ((weight * g.weight) / (length(g) * length(g))) * G * VecGetY(g);
 		}
 		else
 		{
 			y -=  ((weight * g.weight) / (length(g) * length(g))) * G * VecGetY(g);
-		}*/
+		}
+	}*/
+}
+
+void Gravity::GravitationY(Gravity g)
+{
+	if (abs(x - g.x) >= 100|| abs(y - g.y) >=100)
+	{
+		if (y - g.y < 0)
+		{
+			y += ((weight * g.weight) / (length(g) * length(g))) * G * VecGetY(g);
+		}
+		else
+		{
+			y -=  ((weight * g.weight) / (length(g) * length(g))) * G * VecGetY(g);
+		}
 	}
 }
 
