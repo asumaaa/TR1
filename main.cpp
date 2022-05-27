@@ -92,8 +92,11 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		triangle1 = { {t11.x,t11.y},{t12.x,t12.y}, {t13.x,t13.y},triangle1.weight };
 		triangle2 = { {t21.x,t21.y},{t22.x,t22.y}, {t23.x,t23.y},triangle2.weight };
 
-		metaball1.Gravitation(metaball2);
-		metaball2.Gravitation(metaball1);
+		if (CheckHitKey(KEY_INPUT_SPACE) == 1)
+		{
+			metaball1.Gravitation(metaball2);
+			metaball2.Gravitation(metaball1);
+		}
 
 
 		// ï`âÊèàóù
