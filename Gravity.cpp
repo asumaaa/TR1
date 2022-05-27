@@ -84,6 +84,32 @@ void Gravity::GravitationY(Gravity g)
 	}
 }
 
+void Gravity::Gravitation2(Gravity g)
+{
+	if (abs(x - g.x) >= 100 || abs(y - g.y) >= 100)
+	{
+		if (x - g.x < 0)
+		{
+			x += ((weight * g.weight) / (length(g) * length(g))) * G * VecGetX(g);
+		}
+		else
+		{
+			x -= ((weight * g.weight) / (length(g) * length(g))) * G * VecGetX(g);
+		}
+	}
+	if (abs(x - g.x) >= 100|| abs(y - g.y) >=100)
+	{
+		if (y - g.y < 0)
+		{
+			y += ((weight * g.weight) / (length(g) * length(g))) * G * VecGetY(g);
+		}
+		else
+		{
+			y -=  ((weight * g.weight) / (length(g) * length(g))) * G * VecGetY(g);
+		}
+	}
+}
+
 
 //float rx = abs(x - c.x);
 //float ry = abs(y - c.y);

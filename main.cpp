@@ -45,19 +45,36 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 	// ゲームループで使う変数の宣言
 
-	Triangle triangle1 = { {200,300},{100,500},{500,500} ,300};
-	Triangle triangle2 = { {800,400},{700,450},{1050,600} ,300};
+	/*Triangle triangle1 = { {200,300},{100,500},{500,500} ,300};
+	Triangle triangle2 = { {800,400},{700,450},{1050,600} ,300};*/
 
 	//各点の重力を定義
-	Gravity t11(triangle1.top.x, triangle1.top.y, triangle1.weight);
+	/*Gravity t11(triangle1.top.x, triangle1.top.y, triangle1.weight);
 	Gravity t12(triangle1.left.x, triangle1.left.y, triangle1.weight);
 	Gravity t13(triangle1.right.x, triangle1.right.y, triangle1.weight);
 
 	Gravity t21(triangle2.top.x, triangle2.top.y, triangle2.weight);
 	Gravity t22(triangle2.left.x, triangle2.left.y, triangle2.weight);
-	Gravity t23(triangle2.right.x, triangle2.right.y, triangle2.weight);
+	Gravity t23(triangle2.right.x, triangle2.right.y, triangle2.weight)*/;
 
-	/*circle circle1{ 500, 500, 256, 200 };*/
+	circle circle1{ 600, 400, 32, 200 };
+	Gravity c(circle1.x, circle1.y, circle1.r);
+	circle dot[256];
+	Gravity d[256];
+	for (int i = 0; i < 256; i++)
+	{
+		dot[i].x = rand() % WIN_WIDTH;
+		dot[i].y = rand() % WIN_HEIGHT;
+		dot[i].r = 4;
+		dot[i].weight = 200;
+	}
+	for (int i = 0; i < 256; i++)
+	{
+		d[i].x = dot[i].x;
+		d[i].y = dot[i].y;
+		d[i].weight = dot[i].weight;
+	}
+
 
 	Metaball metaball1(300, 300, 128, 200);
 	Metaball metaball2(900, 300, 128, 200);
@@ -81,7 +98,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 		// 更新処理
 
-		t11.Gravitation(t21);
+		/*t11.Gravitation(t21);
 		t12.Gravitation(t22);
 		t13.Gravitation(t23);
 
@@ -90,7 +107,14 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		t23.Gravitation(t13);
 
 		triangle1 = { {t11.x,t11.y},{t12.x,t12.y}, {t13.x,t13.y},triangle1.weight };
-		triangle2 = { {t21.x,t21.y},{t22.x,t22.y}, {t23.x,t23.y},triangle2.weight };
+		triangle2 = { {t21.x,t21.y},{t22.x,t22.y}, {t23.x,t23.y},triangle2.weight };*/
+
+		for (int i = 0; i < 256; i++)
+		{
+			d[i].Gravitation2(c);
+			dot[i].x = d[i].x;
+			dot[i].y = d[i].y;
+		}
 
 		if (CheckHitKey(KEY_INPUT_SPACE) == 1)
 		{
@@ -102,6 +126,11 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		// 描画処理
 		/*DrawTriangle(triangle1);
 		DrawTriangle(triangle2);*/
+		/*for (int i = 0; i < 256; i++)
+		{
+			DrawCircle(dot[i]);
+		}
+		DrawCircle(circle1);*/
 
 		metaball1.Draw();
 		metaball2.Draw();
